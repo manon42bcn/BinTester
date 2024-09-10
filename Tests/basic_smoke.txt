@@ -1,0 +1,63 @@
+FEATURE>>>SMOKE - MAKE AND BASIC ERROR CONTROL
+case>>>Make fclean
+bin>>>make
+fd>>>1
+input>>>fclean
+expected>>>
+rm -rf obj/main.o obj/Span.o
+rm -rf Span
+rm -rf obj
+<<<expected
+<<<case
+case>>>Make all
+bin>>>make
+fd>>>1
+input>>>[EMPTY]
+expected>>>
+mkdir obj
+c++ -std=c++98 -Wall -Wextra -Werror -Iinc -c srcs/main.cpp -o obj/main.o
+c++ -std=c++98 -Wall -Wextra -Werror -Iinc -c srcs/Span.cpp -o obj/Span.o
+c++ obj/main.o obj/Span.o -Iinc -std=c++98 -Wall -Wextra -Werror -lstdc++ -o Span
+<<<expected
+<<<case
+case>>>Make all -no relink-
+bin>>>make
+input>>>[EMPTY]
+expected>>>
+make: Nothing to be done for `all'.
+<<<expected
+<<<case
+case>>>Build Basic Version - Span from subject
+bin>>>make
+fd>>>1
+input>>>basic
+expected>>>
+rm -rf obj/main.o obj/Span.o
+c++ -std=c++98 -Wall -Wextra -Werror -DSUBJECT -Iinc -c srcs/main.cpp -o obj/main.o
+c++ -std=c++98 -Wall -Wextra -Werror -DSUBJECT -Iinc -c srcs/Span.cpp -o obj/Span.o
+c++ obj/main.o obj/Span.o -Iinc -std=c++98 -Wall -Wextra -Werror -DSUBJECT -lstdc++ -o Span
+<<<expected
+<<<case
+case>>>Run basic case from subject
+bin>>>./Span
+input>>>[EMPTY]
+expected>>>
+2
+14
+<<<expected
+<<<case
+case>>>Make re -to build tester version-
+bin>>>make
+fd>>>1
+input>>>re
+expected>>>
+rm -rf obj/main.o obj/Span.o
+rm -rf Span
+rm -rf obj
+mkdir obj
+c++ -std=c++98 -Wall -Wextra -Werror -Iinc -c srcs/main.cpp -o obj/main.o
+c++ -std=c++98 -Wall -Wextra -Werror -Iinc -c srcs/Span.cpp -o obj/Span.o
+c++ obj/main.o obj/Span.o -Iinc -std=c++98 -Wall -Wextra -Werror -lstdc++ -o Span
+<<<expected
+<<<case
+<<<eof

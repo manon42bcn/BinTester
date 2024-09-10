@@ -1,0 +1,115 @@
+FEATURE>>>BASIC CASES - SMALL SPAM (10 -> 50 elements)
+case>>>Small Span - 10 (between 1 - 10) elements
+bin>>>./Span
+input>>>[BIN]echo 10 $(seq 1 10 | shuf -n 10)
+# input>>>[BIN]./Tests/bin/random_span.sh 1 10 10
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 10 (between 1 - 20) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 20 10
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 10 (between 1 - 50) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 50 10
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 10 (between 1 - 100) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 100 10
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 10 Negative Cases (between -100 - 0) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh -100 0 10
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 10 Negative -> Positive (between -10 - 10) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh -10 10 10
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 20 (between 1 - 10) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 20 20
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 20 (between 1 - 30) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 30 20
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 20 (between 1 - 50) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 50 20
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 20 (between 1 - 100) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 100 20
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 20 Negative Cases (between -100 - 0) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh -100 0 20
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 20 Negative -> Positive (between -10 - 10) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh -10 10 20
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 50 (between 1 - 50) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 50 50
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 50 (between 1 - 100) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh 1 100 50
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 50 Negative Cases (between -100 - 0) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh -100 0 50
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+case>>>Small Span - 50 Negative -> Positive (between -50 - 50) elements
+bin>>>./Span
+input>>>[BIN]./Tests/bin/random_span.sh -50 50 50
+expected>>>
+[BIN]./Tests/bin/Span_bash.sh
+<<<expected
+<<<case
+<<<eof

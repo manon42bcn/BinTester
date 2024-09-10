@@ -1,0 +1,92 @@
+FEATURE>>>SMOKE - BASIC CONTROL BEHAVIOUR
+case>>>Basic Error Control Tester Version NO ARGS
+bin>>>./Span
+fd>>>2
+input>>>[EMPTY]
+expected>>>
+Error. At least 2 Arguments are needed to execute.
+Usage: ./Span <num_elem> <elem 1> <elm 2> ... <elm n>
+<<<expected
+<<<case
+case>>>Basic Error Control Tester Version ONE ARG
+bin>>>./Span
+fd>>>2
+input>>>1
+expected>>>
+Error: not enough numbers to compare.
+<<<expected
+<<<case
+case>>>Basic Error Control Tester Version TWO ARG
+bin>>>./Span
+fd>>>2
+input>>>1 1
+expected>>>
+Error: not enough numbers to compare.
+<<<expected
+<<<case
+case>>>Error case -> Full Span + add new number
+bin>>>./Span
+fd>>>2
+input>>>3 1 2 3 4
+expected>>>
+Error: Span is full.
+<<<expected
+<<<case
+case>>>Error case -> Full Span + add new number empty Span
+bin>>>./Span
+fd>>>2
+input>>>0 1 2 3 4
+expected>>>
+Error: Span is full.
+<<<expected
+<<<case
+case>>>Same difference between members
+bin>>>./Span
+fd>>>1
+input>>>5 1 2 3 4 5
+expected>>>
+1
+1
+<<<expected
+<<<case
+case>>>All members are positive equal
+bin>>>./Span
+input>>>5 1 1 1 1 1
+expected>>>
+0
+0
+<<<expected
+<<<case
+case>>>All members are negative equal
+bin>>>./Span
+input>>>5 -1 -1 -1 -1 -1
+expected>>>
+0
+0
+<<<expected
+<<<case
+case>>>Big longest span
+bin>>>./Span
+input>>>5 0 1 0 0 99
+expected>>>
+0
+99
+<<<expected
+<<<case
+case>>>Tricky longest span
+bin>>>./Span
+input>>>6 -75 0 1 -1 75 0
+expected>>>
+0
+75
+<<<expected
+<<<case
+case>>>Tricky shortest span
+bin>>>./Span
+input>>>6 -1 1 -1 0 1 -1
+expected>>>
+0
+1
+<<<expected
+<<<case
+<<<eof
