@@ -200,12 +200,30 @@ case_execution()
     expected="${expected#\[BIN\]}"
     exp_execution="$(eval $expected $input $out_fd)"
   else
-    exp_execution=${expected//\[EMPTY\]/ }
+    exp_execution=$expected
   fi
+
+  # REGEX LABEL
+  if [[ $exp_execution == "[REGEX]"* ]]; then
+    regex=1
+    exp_execution="${exp_execution#\[REGEX\]}"
+  fi
+  exp_execution=${exp_execution//\[EMPTY\]/ }
+
   # GET BINARY RESULTS
   bin_execution="$(eval $binary $input $out_fd)"
+
   # EVALUATE RESULT
-  diff_output=$(diff <(echo -e "$exp_execution") <(echo -e "$bin_execution"))
+  if [[ regex ]]; then
+      if echo "$bin_execution" | grep -E "$exp_execution" > /dev/null; then
+        diff_output=""
+      else
+        diff_output="KO regex validation:\n$bin_execution\n$exp_execution"
+      fi
+  else
+      diff_output=$(diff <(echo -e "$exp_execution") <(echo -e "$bin_execution"))
+  fi
+
   if [[ -z "$diff_output" ]]; then
     report_ok=$((report_ok + 1))
     success=$(( success + 1 ))

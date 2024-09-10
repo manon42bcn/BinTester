@@ -135,6 +135,7 @@ A multiline Output
 - You can use special input and strings to get extra functionality:
   - [BIN]: to execute a binary as input or expected. Binary as expected will receive same args from input that bin field. You can also use a command like input>>>[BIN]echo input.
   - [EMPTY]: to leave an empty space.
+  - [REGEX]: to compare expected using regex capability.
   - fd>>>output to test. 1 = stdout, 2 = stderr, 3 both.
 
 ## Examples.
