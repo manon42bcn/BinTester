@@ -204,6 +204,7 @@ case_execution()
   fi
 
   # REGEX LABEL
+  regex=0
   if [[ $exp_execution == "[REGEX]"* ]]; then
     regex=1
     exp_execution="${exp_execution#\[REGEX\]}"
@@ -214,11 +215,11 @@ case_execution()
   bin_execution="$(eval $binary $input $out_fd)"
 
   # EVALUATE RESULT
-  if [[ regex ]]; then
+  if [[ $regex == 1 ]]; then
       if echo "$bin_execution" | grep -E "$exp_execution" > /dev/null; then
         diff_output=""
       else
-        diff_output="KO regex validation:\n$bin_execution\n$exp_execution"
+        diff_output="KO: exec: $bin_execution\n regex: $exp_execution"
       fi
   else
       diff_output=$(diff <(echo -e "$exp_execution") <(echo -e "$bin_execution"))
