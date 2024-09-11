@@ -31,7 +31,7 @@
 # linkedin: https://www.linkedin.com/in/manuelporrasojeda
 # Github: https://github.com/manon42bcn
 # Feel free to write!
-# Original version: https://github.com/manon42bcn/cpp_tester
+# Original version: https://github.com/manon42bcn/BinTester
 
 # Bin General Tester
 
