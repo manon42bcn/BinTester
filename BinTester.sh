@@ -338,9 +338,9 @@ runner()
     cases_files+=" $(find "${base_dir%/ 2>/dev/null}" -name *_cases.* -type f 2>/dev/null)"
     cases=$(find "${base_dir%/ 2>/dev/null}" -name *_cases.* -type f 2>/dev/null | wc -w)
     if [[ $smoke > 0 ]]; then
-      smoke_mode=$(True)
+      smoke_mode=$(true)
     else
-      smoke_mode=$(False)
+      smoke_mode=$(false)
     fi
   else
     cases_files=$only_file
@@ -360,11 +360,11 @@ runner()
     fi
     # If smoke test were found, after its execution, we must check if any fail.
     # before execute regular cases.
-    if [[ $smoke_mode == $(True) && "$file" == *"_cases."* ]]; then
+    if [[ $smoke_mode == $(true) && "$file" == *"_cases."* ]]; then
       if [[ $fails -ne 0 || $only_smoke ]]; then
         report $cases $smoke "ONLY SMOKE CASES WERE EXECUTED"
       fi
-      smoke_mode=$(False)
+      smoke_mode=$(false)
     fi
   done
 #
